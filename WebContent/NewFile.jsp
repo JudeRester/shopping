@@ -29,16 +29,19 @@
 			</ul>
 		</div>
 	</nav>
-	<div class="endsoon">
+	<div id="mid">
 		<h3>마감 임박</h3>
-		<ul>
-			<li><poster><img src="images/main_Logo.png" alt="" /></poster></li>
-			<li><poster><img src="images/main_Logo.png" alt="" /></poster></li>
-			<li><poster><img src="images/main_Logo.png" alt="" /></poster></li>
-			<li><poster><img src="images/main_Logo.png" alt="" /></poster></li>
-			<li><poster><img src="images/main_Logo.png" alt="" /></poster></li>
-			<li><poster><img src="images/main_Logo.png" alt="" /></poster></li>
-		</ul>
+		<div id="endsoon">
+			<ul>
+				<li><img src="images/test.png" alt="" /></li>
+				<li><img src="images/test2.png" alt="" /></li>
+				<li><img src="images/test3.png" alt="" /></li>
+				<li><img src="images/test.png" alt="" /></li>
+				<li><img src="images/test2.png" alt="" /></li>
+				<li><img src="images/test3.png" alt="" /></li>
+			</ul>
+		</div>
 	</div>
+
 </body>
 </html>
