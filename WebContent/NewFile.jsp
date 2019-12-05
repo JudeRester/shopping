@@ -8,8 +8,9 @@
 <link rel="stylesheet" type="text/css" href="css/header.css">
 </head>
 <body>
-	<logo> <a href=""><img src="images/main_Logo.png" alt="" /></a></logo>
-	<nav>
+	<div id="logo"> 
+	<a href=""><img src="images/main_Logo.png" alt="" /></a>
+	</div>
 		<div id="menu">
 			<ul>
 				<li><a href="#">상품</a>
@@ -28,7 +29,7 @@
 				<li><a href="#">장바구니</a></li>
 			</ul>
 		</div>
-	</nav>
+	
 	<div id="mid">
 		<h3>마감 임박</h3>
 		<div id="endsoon">
