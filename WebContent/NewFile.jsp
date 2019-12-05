@@ -6,6 +6,38 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/header.css">
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  
+  <script>
+  	$(document).ready(function(){
+  		var $panel = $("#endsoon").find("ul");
+  		var itemWidth = $panel.children().outerWidth();
+  		var itemLength = $panel.children().length;
+  		
+  		var rollingId;
+  		auto();
+  		
+  		function start(){
+  			$panel.css("width",itemWidth * itemLength);
+  			$panel.animate({"left":-itemWidth + "ps"}, function(){
+  				//첫번째 아이템을 마지막에 추가
+  				$(this).append("<li>"+$(this).find("li:first").html()+"</li>");
+  				//첫번째 아이템 삭제
+  				$(this).find("li:first").remove();
+  				//좌측 패널 수치 초기화
+  				$(this).css("left",0);
+  			});
+  		}
+  		function auto(){
+  			rollingId=setInterval(function(){
+  				start();
+  			},2000);
+  		}
+  	});
+  </script>
 </head>
 <body>
 	<div id="logo"> 
@@ -41,6 +73,10 @@
 				<li><img src="images/test2.png" alt="" /></li>
 				<li><img src="images/test3.png" alt="" /></li>
 			</ul>
+		</div>
+		<div id="arrows">
+			<a href="javascript:void(0)"><img src="images/left-arrow.png" alt="" id="left_arrow" /></a>
+			<a href="javascript:void(0)"><img src="images/right-arrow.png" alt="" id="right_arrow" /></a>
 		</div>
 	</div>
 

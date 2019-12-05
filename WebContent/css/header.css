@@ -76,7 +76,7 @@ a {
 }
 #mid {
 	position : relative;
-	width: 100%;
+	width: 1000px;
 	height: 425px;
 	text-align: center;
 	/* border: solid 1px red; */
@@ -103,3 +103,16 @@ a {
 	height: 400px;
 }
 
+#arrows{
+	width:100%;
+	position:absolute;
+	top:50%;
+}
+#left_arrow{
+	position:absolute;
+	left:0px;
+}
+#right_arrow{
+	position: absolute;
+	right:0px;
+}
