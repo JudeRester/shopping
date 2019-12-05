@@ -21,7 +21,7 @@
 		<div id="memfuncs">
 			<ul>
 				<li><a href="javascript:void(0)" id="login">로그인</a></li>
-				<li><a href="javascript:void(0)">회원가입</a></li>
+				<li><a href="javascript:void(0)" id="join">회원가입</a></li>
 			</ul>
 		</div>
 		<a href="javascript:void(0)"><img src="images/main_Logo.png"
@@ -47,8 +47,8 @@
 		</ul>
 	</div>
 
-	<div class="modal">
-		<div class="modal-content">
+	<div class="login-modal">
+		<div class="login-modal-content">
 			<form action="" method="post">
 				<p>로그인</p>
 				<table>
@@ -62,7 +62,50 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="submit" value="로그인" /> <input type="button" value="취소" id="cancel" /></td>
+						<td><input type="submit" value="로그인" /> <input type="button"
+							value="취소" class="cancel" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+	<div class="join-modal">
+		<div class="join-modal-content">
+			<form action="" method="post">
+				<p>회원가입</p>
+				<table>
+					<tr>
+						<td><label for="id_join">아이디</label></td>
+						<td><input type="text" id="id_join" name="id" /></td>
+					</tr>
+					<tr>
+						<td><label for="pass_join">비밀번호</label></td>
+						<td><input type="password" id="pass_join" name="pass" /></td>
+					</tr>
+					<tr>
+						<td><label for="name">이름</label></td>
+						<td><input type="text" id="name" name="name" /></td>
+					</tr>
+					<tr>
+						<td><label for="birth">생일</label></td>
+						<td><input type="date" id="birth" name="birth" /></td>
+					</tr>
+					<tr>
+						<td><label for="addr">주소</label></td>
+						<td><input type="text" id="addr" name="addr" /></td>
+					</tr>
+					<tr>
+						<td><label for="phone">전화번호</label></td>
+						<td><input type="text" id="phone" name="phone" /></td>
+					</tr>
+					<tr>
+						<td><label for="email">이메일</label></td>
+						<td><input type="email" id="email" name="email" /></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="submit" value="회원가입" /> <input type="button"
+							value="취소" class="cancel" /></td>
 					</tr>
 				</table>
 			</form>

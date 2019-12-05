@@ -3,9 +3,13 @@
  */
 $(document).ready(function(){
 	$("#login").on("click",function(){
-		$(".modal").css("display","block");
+		$(".login-modal").css("display","block");
 	});
-	$("#cancel").on("click",function(){
-		$(".modal").css("display","none");
+	$(".cancel").on("click",function(){
+		$(".login-modal").css("display","none");
+		$(".join-modal").css("display","none");
+	});
+	$("#join").on("click",function(){
+		$(".join-modal").css("display","block");
 	});
 });
