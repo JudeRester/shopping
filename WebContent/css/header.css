@@ -25,7 +25,14 @@ a {
 	text-decoration: none;
 	color: #ffffff;
 }
-
+#memfuncs{
+    width: 500px;
+    position: absolute;
+    right: 0px;
+}
+#memfuncs>ul>li>a{
+	color:#000000;
+}
 #menu {
 	z-index : 5;
 	width: 960px;

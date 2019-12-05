@@ -1,0 +1,11 @@
+/**
+ * 
+ */
+$(document).ready(function(){
+	$("#login").on("click",function(){
+		$(".modal").css("display","block");
+	});
+	$("#cancel").on("click",function(){
+		$(".modal").css("display","none");
+	});
+});
