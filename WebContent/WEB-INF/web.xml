@@ -12,7 +12,7 @@
   
   <resource-ref>
   	<description>DataBase of Online Shopping Page</description>
-  	<res-ref-name>shoppingdb</res-ref-name>
+  	<res-ref-name>jmaria.cjfyniuzaepw.ap-northeast-2.rds.amazonaws.com:3306/shopping</res-ref-name>
   	<res-type>javax.sql.DataSource</res-type>
   	<res-auth>Container</res-auth>
   </resource-ref>

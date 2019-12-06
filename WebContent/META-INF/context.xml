@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+                  <Resource name="jdbc/shopping" auth="Container"
+              type="javax.sql.DataSource" 
+              driverClassName="com.mysql.cj.jdbc.Driver"
+              url="jdbc:mysql://jmaria.cjfyniuzaepw.ap-northeast-2.rds.amazonaws.com:3306/shopping"
+              username="jude" 
+              password="1301181" 
+              maxTotal="20" 
+              maxIdle="10"
+              maxWaitMillis="-1"/>

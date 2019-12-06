@@ -13,8 +13,5 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="D:/D_Tool/jsp_work/shopping/WebContent/WEB-INF/lib/commons-dbcp2-2.7.0.jar"/>
-	<classpathentry kind="lib" path="D:/D_Tool/jsp_work/shopping/WebContent/WEB-INF/lib/commons-logging-1.2.jar"/>
-	<classpathentry kind="lib" path="D:/D_Tool/jsp_work/shopping/WebContent/WEB-INF/lib/commons-pool2-2.7.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
