@@ -62,7 +62,7 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="submit" value="로그인" /> <input type="button"
+						<td><input type="submit" value="로그인" id="uLogin"/> <input type="button"
 							value="취소" class="cancel" /></td>
 					</tr>
 				</table>
