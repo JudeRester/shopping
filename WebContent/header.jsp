@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,17 +14,29 @@
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
 <script src="js/count.js"></script>
-<script src="js/endsoon.js"></script>
 <script src="js/modal.js"></script>
 </head>
 <body>
 	<div id="logo">
-		<div id="memfuncs">
-			<ul>
-				<li><a href="javascript:void(0)" id="login">로그인</a></li>
-				<li><a href="javascript:void(0)" id="join">회원가입</a></li>
-			</ul>
-		</div>
+		<c:choose>
+			<c:when test="${empty sessionScope.id }">
+				<div id="memfuncs">
+					<ul>
+						<li><a href="javascript:void(0)" id="login">로그인</a></li>
+						<li><a href="javascript:void(0)" id="join">회원가입</a></li>
+					</ul>
+				</div>
+			</c:when>
+			<c:when test="${!empty sessionScope.id }">
+				<div id="memfuncs">
+					<ul>
+						<li><c:out value="${sessionScope.id }" />님</li>
+						<li><a href="javascript:void(0)" id="logout">로그아웃</a></li>
+					</ul>
+				</div>
+			</c:when>
+		</c:choose>
+
 		<a href="javascript:void(0)"><img src="images/main_Logo.png"
 			alt="" /></a>
 
@@ -62,8 +75,8 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="submit" value="로그인" id="uLogin"/> <input type="button"
-							value="취소" class="cancel" /></td>
+						<td><input type="button" value="로그인" id="uLogin" /> <input
+							type="button" value="취소" class="cancel" /></td>
 					</tr>
 				</table>
 			</form>
@@ -104,8 +117,8 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="submit" value="회원가입" /> <input type="button"
-							value="취소" class="cancel" /></td>
+						<td><input type="submit" value="회원가입" /> <input
+							type="button" value="취소" class="cancel" /></td>
 					</tr>
 				</table>
 			</form>

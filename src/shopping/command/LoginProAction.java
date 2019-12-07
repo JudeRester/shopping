@@ -1,9 +1,9 @@
-package bookshop.command;
+package shopping.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bookshop.bean.LogonDBBean;
+import shopping.databases.LoginDB;
 
 public class LoginProAction implements CommandAction {
 
@@ -16,12 +16,10 @@ public class LoginProAction implements CommandAction {
 		String id = request.getParameter("id");
 		String passwd  = request.getParameter("passwd");
 		//사용자가 입력한 id, passwd를 가지고 인증 체크 후 값 반환
-		LogonDBBean manager = LogonDBBean.getInstance();
-		int check= manager.userCheck(id,passwd);
+		LoginDB manager = LoginDB.getInstance();
+		int check= manager.login(id,passwd);
 		request.setAttribute("id", id);
 		request.setAttribute("check", new Integer(check));
-		System.out.println("체크"+check);
-		
 		return "/member/loginPro.jsp";
 	}
 }

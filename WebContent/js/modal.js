@@ -26,8 +26,9 @@ $(document).ready(function(){
 		    	 var loc = data.indexOf(str1);
 		    	 var len = str1.length;
 		    	 var check = data.substr(loc+len,1);
+		    	 console.log(check);
 		    	 if(check == "1"){//
-		    		window.location.href("/shopping/index.do");
+		    		window.location.href="/shopping/index.do";
 		    	 }else if(check == "0"){
 		    	  	alert("비밀번호 틀림");
 		    	  	$("#pass").val("");
@@ -38,5 +39,7 @@ $(document).ready(function(){
 		        }
 		 	}
 		  });
+		  
+		  
 	});
 });
