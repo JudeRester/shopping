@@ -10,6 +10,7 @@ public class ProductDTO {
 	private Date begin_date;
 	private Date end_date;
 	private String title_img;
+	private String strEnd_date;
 	public String getPro_num() {
 		return pro_num;
 	}
@@ -43,6 +44,7 @@ public class ProductDTO {
 	public Date getEnd_date() {
 		return end_date;
 	}
+	
 	public void setEnd_date(Date end_date) {
 		this.end_date = end_date;
 	}
@@ -51,6 +53,12 @@ public class ProductDTO {
 	}
 	public void setTitle_img(String title_img) {
 		this.title_img = title_img;
+	}
+	public String getStrEnd_date() {
+		return strEnd_date;
+	}
+	public void setStrEnd_date(String strEnd_date) {
+		this.strEnd_date = strEnd_date;
 	}
 	
 }

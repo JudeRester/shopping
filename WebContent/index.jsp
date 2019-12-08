@@ -3,22 +3,21 @@
 <%@ include file="./header.jsp"%>
 <link rel="stylesheet" type="text/css" href="css/index.css">
 <script src="js/endsoon.js"></script>
+<script src="js/count.js"></script>
 <div id="mid">
 	<h3>마감 임박</h3>
 	<div id="endsoon">
 		<ul>
-			<li><img src="images/test.png" alt="" />
-				<div class="count" id="a"></div></li>
-			<li><img src="images/test2.png" alt="" />
-				<div class="count" id="b"></div></li>
-			<li><img src="images/test3.png" alt="" />
-				<div class="count" id="c"></div></li>
-			<li><img src="images/test.png" alt="" />
-				<div class="count" id="d"></div></li>
-			<li><img src="images/test2.png" alt="" />
-				<div class="count" id="e"></div></li>
-			<li><img src="images/test3.png" alt="" />
-				<div class="count" id="f"></div></li>
+			<c:forEach var="prod" items="${prod_List}">
+				<li><img src="${prod.title_img }" alt="" />
+					<div class="count" id="${prod.pro_num }"></div></li>
+				<script>
+				var orgDate = "${prod.strEnd_date}";
+				var dateArray = orgDate.split(",");
+				var date = new Date(dateArray[0],dateArray[1]-1,dateArray[2]);
+				getTimer(date, "${prod.pro_num}");
+				</script>
+			</c:forEach>
 		</ul>
 	</div>
 	<div id="arrows">
@@ -35,7 +34,7 @@
 	<article class="arti">
 		<div>판매예정 상품</div>
 		<a href="javascript:void(0)"><img src="images/test.png" alt="" /></a>
-		
+
 	</article>
 
 </section>

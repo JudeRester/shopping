@@ -17,12 +17,8 @@ public class indexAction implements CommandAction{
 		
 		ProductDB pDB = ProductDB.getInstance();//DB연동
 		
-		//카테고리별 최신의 상품 3개씩 얻어내서 List에 저장
 		prod_List = pDB.getEndsoon();
-		
-        //해당 페이지로 보낼 내용 설정
         request.setAttribute("prod_List", prod_List);
-        //사용자 화면을 의미하는 값을 설정
 		return "/index.jsp";
 	}
 

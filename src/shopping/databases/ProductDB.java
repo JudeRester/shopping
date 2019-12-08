@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,12 +40,12 @@ public class ProductDB {
 
 		try {
 			conn = getConnection();
-
-			String sql = "select * from (select row_number() over() as rownum,pro_num,title,pro_desc,price,begin_date,end_date from product order by end_date)c where rownum between 1 and 6";
+			String sql = "select * from (select row_number() over(order by end_date asc) as rownum,pro_num,title,pro_desc,price,begin_date,end_date,title_img from product where end_date>now())c where rownum between 1 and 6";
 
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy,MM,dd");
 			if (rs.next()) {
 				prod_List = new ArrayList<ProductDTO>();
 				do {
@@ -55,6 +56,8 @@ public class ProductDB {
 					prod.setPrice(rs.getInt("price"));
 					prod.setBegin_date(rs.getDate("begin_date"));
 					prod.setEnd_date(rs.getDate("end_date"));
+					prod.setStrEnd_date(sdf.format(rs.getDate("end_date")));
+					prod.setTitle_img(rs.getString("title_img"));
 					prod_List.add(prod);
 				} while (rs.next());
 			}

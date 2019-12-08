@@ -38,7 +38,7 @@
 			</c:when>
 		</c:choose>
 
-		<a href="javascript:void(0)"><img
+		<a href="/shopping/index.do"><img
 			src="/shopping/images/main_Logo.png" alt="" /></a>
 
 	</div>
