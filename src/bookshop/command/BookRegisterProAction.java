@@ -66,11 +66,8 @@ public class BookRegisterProAction implements CommandAction {
 		String min_sys = imageUp.getParameter("min_sys");
 		String rec_sys = imageUp.getParameter("rec_sys");
 		String price = imageUp.getParameter("price");
-		String count = imageUp.getParameter("count");
-		String publishing_com = imageUp.getParameter("publishing_com");
 		String begin_date = imageUp.getParameter("begin_date");
 		String end_date = imageUp.getParameter("end_date");
-		String discount_rate = imageUp.getParameter("discount_rate");
 		String grade = imageUp.getParameter("grade");
 		
 		//책 등록일 계산
@@ -88,8 +85,6 @@ public class BookRegisterProAction implements CommandAction {
 		book.setMin_sys(min_sys);
 		book.setRec_sys(rec_sys);
 		book.setPrice(Integer.parseInt(price));
-		book.setCount(Short.parseShort(count));
-		book.setPublishing_com(publishing_com);
 		book.setPublishing_date(year+month+day);
 		book.setGrade(grade);
 		
@@ -107,7 +102,6 @@ public class BookRegisterProAction implements CommandAction {
         System.out.println(sEnd_date);
 		book.setEnd_date(sEnd_date);
 		
-		book.setDiscount_rate(Byte.parseByte(discount_rate));
 
 		//DB연동 - 넘어온 정보를 테이블의 레코드로 추가
 		MngrDBBean bookProcess = MngrDBBean.getInstance();

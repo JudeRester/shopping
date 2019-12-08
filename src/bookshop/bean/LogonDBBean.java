@@ -30,7 +30,6 @@ public class LogonDBBean {
         Context initCtx = new InitialContext();
         Context envCtx = (Context) initCtx.lookup("java:comp/env");
         DataSource ds = (DataSource)envCtx.lookup("jdbc/shopping");
-        System.out.println("연결성공");
         return ds.getConnection();
     }
  

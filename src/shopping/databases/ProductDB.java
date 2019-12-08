@@ -40,7 +40,7 @@ public class ProductDB {
 
 		try {
 			conn = getConnection();
-			String sql = "select * from (select row_number() over(order by end_date asc) as rownum,pro_num,title,pro_desc,price,begin_date,end_date,title_img from product where end_date>now())c where rownum between 1 and 6";
+			String sql = "select * from (select row_number() over(order by end_date asc) as rownum,pro_num,title,pro_desc,price,begin_date,end_date,title_img from product where end_date>now() and begin_date<=now())c where rownum between 1 and 6";
 
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -90,7 +90,7 @@ public class ProductDB {
 		try {
 			conn = getConnection();
 
-			String sql = "select * from (select row_number() over() as rownum,pro_num,title,pro_desc,price,begin_date,end_date,title_img from product where pro_num like ? and end_date > now() order by end_date)c where rownum between 1 and 6";
+			String sql = "select * from (select row_number() over(order by end_date asc) as rownum,pro_num,title,pro_desc,price,begin_date,end_date,title_img from product where pro_num like ? and end_date > now() and begin_date<=now() order by end_date)c where rownum between 1 and 6";
 
 			pstmt = conn.prepareStatement(sql);
 			if("all".contentEquals(category))
@@ -142,7 +142,7 @@ public class ProductDB {
 		try {
 			conn = getConnection();
 
-			String sql = "select * from (select row_number() over() as rownum,pro_num,title,pro_desc,price,begin_date,end_date,title_img from product where pro_num like ? and end_date > now() order by end_date)c where rownum between ? and ?";
+			String sql = "select * from (select row_number() over(order by end_date asc) as rownum,pro_num,title,pro_desc,price,begin_date,end_date,title_img from product where pro_num like ? and end_date > now() and begin_date<=now() order by end_date)c where rownum between ? and ?";
 
 			pstmt = conn.prepareStatement(sql);
 			if("all".contentEquals(category))
