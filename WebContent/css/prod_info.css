@@ -2,8 +2,9 @@
 /* .visual {
 	width: 300%;
 } */
-.fl {float:left;}
-
+.fl {
+	float: left;
+}
 
 .visual_img {
 	position: relative;
@@ -24,27 +25,33 @@ section {
 	margin: 0 auto;
 	margin-top: 20px;
 	text-align: center;
-	border:solid 1px blue;
-	
+	border: solid 1px blue;
 	display: block;
 }
+
 article {
-	width:900px; height: 200px; border:solid 1px #c7c7c7;  background-repeat: no-repeat;
+	width: 900px;
+	height: 200px;
+	border: solid 1px #c7c7c7;
+	background-repeat: no-repeat;
 	display: inline-block;
 	margin-left: 30px;
-	margin-top:30px;
+	margin-top: 30px;
 }
+
 .arti_2 {
 	margin-left: 10px;
-	width:450px;
+	width: 450px;
 }
 
 #screenShots {
 	width: 980px;
 	height: 400px;
-	text-align: center;
+	margin-top: 20px; 
+	text-align : center;
 	display: inline-block;
 	overflow: hidden;
+	text-align: center;
 }
 
 #screenShots>ul>li {
@@ -53,12 +60,13 @@ article {
 	margin-left: 10px;
 	margin-right: 10px;
 }
+
 #screenShots>ul>li>.count {
-	position : absolute;
-	color : white;
+	position: absolute;
+	color: white;
 	text-shadow: 1px #000000;
-	left:20%;
-	top:70%;
+	left: 20%;
+	top: 70%;
 	z-index: 20;
 }
 

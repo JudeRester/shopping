@@ -146,10 +146,9 @@ public class ProductDB {
 			if ("all".contentEquals(category))
 				category = "%";
 			pstmt.setString(1, category + "%");
-			pstmt.setInt(2, page * 3);
-			pstmt.setInt(3, page * 3 + 1);
+			pstmt.setInt(2, page * 3+1);
+			pstmt.setInt(3, page * 3+3);
 			rs = pstmt.executeQuery();
-
 			if (rs.next()) {
 				prod_List = new ArrayList<ProductDTO>();
 				do {
@@ -232,5 +231,42 @@ public class ProductDB {
 				}
 		}
 		return prod;
+	}
+	public List<String> getScreenShots(String pro_num) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<String> images=new ArrayList<String>();
+		try {
+			conn = getConnection();
+
+			String sql = "select loc from photos where pro_num = ?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, pro_num);
+			rs = pstmt.executeQuery();
+
+			while(rs.next())
+				images.add(rs.getString("loc"));
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
+		}
+		return images;
 	}
 }

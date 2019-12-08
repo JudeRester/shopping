@@ -5,7 +5,7 @@
 $(document).ready(
 		function() {
 			var win = $(window);
-			var count = 1;
+			var count = 2;
 
 			$.urlParam = function(name) {
 				var results = new RegExp('[\?&]' + name + '=([^&#]*)')

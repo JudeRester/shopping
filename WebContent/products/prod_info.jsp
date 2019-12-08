@@ -8,21 +8,10 @@
 <div class="visual_img">
 	<div id="screenShots">
 		<ul>
-			<%-- <c:forEach var="prod" items="${prod_List}">
-				<li><img src="${prod.title_img }" alt="" />
-					<div class="count" id="${prod.pro_num }"></div></li>
-				<script>
-					var orgDate = "${prod.strEnd_date}";
-					var dateArray = orgDate.split(",");
-					var date = new Date(dateArray[0], dateArray[1] - 1,
-							dateArray[2]);
-					getTimer(date, "${prod.pro_num}");
-					img = "${prod.title_img}";
-					$(document).ready(function() {
-						$("#curr_sale").attr("src", img);
-					});
-				</script>
-			</c:forEach> --%>
+			<c:forEach var="images" items="${images}">
+				<li><img src="${images }.jpg" alt="" /></li>
+				
+			</c:forEach>
 		</ul>
 	</div>
 	<div id="arrows">
