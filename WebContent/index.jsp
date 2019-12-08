@@ -9,8 +9,9 @@
 	<div id="endsoon">
 		<ul>
 			<c:forEach var="prod" items="${prod_List}">
-				<li><img src="${prod.title_img }" alt="" />
+				<li><a href="prod_info.do?pro_num=${prod.pro_num }"><img src="${prod.title_img }" alt="" /></a>
 					<div class="count" id="${prod.pro_num }"></div></li>
+					
 				<script>
 					var orgDate = "${prod.strEnd_date}";
 					var dateArray = orgDate.split(",");

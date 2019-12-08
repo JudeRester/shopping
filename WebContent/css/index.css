@@ -32,7 +32,7 @@
 	z-index: 20;
 }
 
-#endsoon>ul>li>img {
+#endsoon>ul>li>a>img {
 	width: 300px;
 	height: 400px;
 }

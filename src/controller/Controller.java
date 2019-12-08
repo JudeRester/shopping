@@ -129,7 +129,7 @@ public class Controller extends HttpServlet {
 		request.setAttribute("cont", view);
 		System.out.println("view는 : "+view);
 		System.out.println("com는 : "+com);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}
 }
