@@ -76,26 +76,21 @@ public class MngrDBBean {
     throws Exception {
         Connection conn = null;
         PreparedStatement pstmt = null;
-        
+        System.out.println("insertBook넘어옴");
         try {
             conn = getConnection();
-            String sql = "insert into book(book_kind,book_title,book_price,";
-            sql += "book_count,author,publishing_com,publishing_date,book_image,";
-            sql += "book_content,discount_rate,reg_date) values (?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into product(pro_num,title,pro_desc,";
+            sql += "price,begin_date,end_date,title_img) values (?,?,?,?,?,?,?)";
             
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, book.getBook_kind());
-            pstmt.setString(2, book.getBook_title());
-            pstmt.setInt(3, book.getBook_price());
-            pstmt.setShort(4, book.getBook_count());
-            pstmt.setString(5, book.getAuthor());
-            pstmt.setString(6, book.getPublishing_com());
-			pstmt.setString(7, book.getPublishing_date());
-			pstmt.setString(8, book.getBook_image());
-			pstmt.setString(9, book.getBook_content());
-			pstmt.setByte(10,book.getDiscount_rate());
-			pstmt.setTimestamp(11, book.getReg_date());
-			
+            System.out.println(book.getKind()+"/"+book.getPublishing_date()+"/"+book.getGrade());
+            pstmt.setString(1, book.getKind()+book.getPublishing_date()+book.getGrade());
+            pstmt.setString(2, book.getTitle());
+            pstmt.setString(3, book.getPro_desc());
+            pstmt.setInt(4, book.getPrice());
+            pstmt.setDate(5, book.getBegin_date());
+            pstmt.setDate(6, book.getEnd_date());
+            pstmt.setString(7, book.getTitle_image());
             pstmt.executeUpdate();
             
         } catch(Exception ex) {
@@ -106,6 +101,7 @@ public class MngrDBBean {
             if (conn != null) 
             	try { conn.close(); } catch(SQLException ex) {}
         }
+        System.out.println("inert성공");
     }
     
     //�씠誘몃벑濡앸맂 梨낆쓣 寃�利�
@@ -121,7 +117,7 @@ public class MngrDBBean {
             conn = getConnection();
             
             String sql = "select book_name from book ";
-            sql += " where book_kind = ? and book_name = ? and author = ?";
+            sql += " where kind = ? and book_name = ? and author = ?";
             
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, kind);
@@ -160,7 +156,7 @@ public class MngrDBBean {
         try {
             conn = getConnection();
             
-            pstmt = conn.prepareStatement("select count(*) from book");
+            pstmt = conn.prepareStatement("select count(*) from product");
             rs = pstmt.executeQuery();
 
             if (rs.next()) 
@@ -179,18 +175,18 @@ public class MngrDBBean {
     }
 	
 	// �빐�떦 遺꾨쪟�쓽 梨낆쓽 �닔瑜� �뼸�뼱�궡�뒗 硫붿냼�뱶
-	public int getBookCount(String book_kind)
+	public int getBookCount(String kind)
 	throws Exception {
 	    Connection conn = null;
 	    PreparedStatement pstmt = null;
 	    ResultSet rs = null;
 
 	    int x=0;
-	    int kind  = Integer.parseInt(book_kind);
+	  
 
 	    try {
 	        conn = getConnection();
-	        String query = "select count(*) from book where book_kind=" + kind;
+	        String query = "select count(*) from book where kind=" + kind;
 	        pstmt = conn.prepareStatement(query);
 	        rs = pstmt.executeQuery();
 
@@ -206,11 +202,12 @@ public class MngrDBBean {
 	        if (conn != null) 
 	           try { conn.close(); } catch(SQLException ex) {}
 	    }
+	    System.out.println("getBookcount성공");
 		return x;
 	}
 	
 	//梨낆쓽 �젣紐⑹쓣 �뼸�뼱�깂
-	public String getBookTitle(int book_id){
+	public String getBookTitle(int pro_num){
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -219,7 +216,7 @@ public class MngrDBBean {
         try {
             conn = getConnection();
             
-            pstmt = conn.prepareStatement("select book_title from book where book_id = "+book_id);
+            pstmt = conn.prepareStatement("select book_title from book where pro_num = "+pro_num);
             rs = pstmt.executeQuery();
 
             if (rs.next()) 
@@ -234,25 +231,25 @@ public class MngrDBBean {
 		return x;
     }
 	// 遺꾨쪟蹂꾨삉�뒗 �쟾泥대벑濡앸맂 梨낆쓽 �젙蹂대�� �뼸�뼱�궡�뒗 硫붿냼�뱶
-	public List<MngrDataBean> getBooks(String book_kind)
+	public List<MngrDataBean> getBooks(String kind)
     throws Exception {
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         List<MngrDataBean> bookList=null;
-        
+        System.out.println(kind);
         try {
             conn = getConnection();
             
-            String sql1 = "select * from book";
-            String sql2 = "select * from book ";
-            sql2 += "where book_kind = ? order by reg_date desc";
+            String sql1 = "select * from product";
+            String sql2 = "select * from product";
+            sql2 += "where kind = ? order by price desc";
             
-            if(book_kind.equals("all")||book_kind.equals("")){
+            if(kind.equals("all")||kind.equals("")){
             	 pstmt = conn.prepareStatement(sql1);
             }else{
                 pstmt = conn.prepareStatement(sql2);
-                pstmt.setString(1, book_kind);
+                pstmt.setString(1, kind);
             }
         	rs = pstmt.executeQuery();
             
@@ -261,17 +258,13 @@ public class MngrDBBean {
                 do{
                 	MngrDataBean book= new MngrDataBean();
                      
-                     book.setBook_id(rs.getInt("book_id"));
-                     book.setBook_kind(rs.getString("book_kind"));
-                     book.setBook_title(rs.getString("book_title"));
-                     book.setBook_price(rs.getInt("book_price"));
-                     book.setBook_count(rs.getShort("book_count"));
-                     book.setAuthor(rs.getString("author"));
-                     book.setPublishing_com(rs.getString("publishing_com"));
-                     book.setPublishing_date(rs.getString("publishing_date"));
-                     book.setBook_image(rs.getString("book_image"));
-                     book.setDiscount_rate(rs.getByte("discount_rate"));
-                     book.setReg_date(rs.getTimestamp("reg_date"));
+                     book.setPro_num(rs.getString("pro_num"));
+                     book.setTitle(rs.getString("title"));
+                     book.setPro_desc(rs.getString("pro_desc"));
+                     book.setPrice(rs.getInt("price"));
+                     book.setBegin_date(rs.getDate("begin_date"));
+                     book.setEnd_date(rs.getDate("end_date"));
+                     book.setTitle_image(rs.getString("title_img"));
                      
                      bookList.add(book);
 			    }while(rs.next());
@@ -286,11 +279,12 @@ public class MngrDBBean {
             if (conn != null) 
             	try { conn.close(); } catch(SQLException ex) {}
         }
+        System.out.println("getbookList성공");
 		return bookList;
     }
 	
 	// �눥�븨紐� 硫붿씤�뿉 �몴�떆�븯湲� �쐞�빐�꽌 �궗�슜�븯�뒗 遺꾨쪟蹂� �떊媛꾩콉紐⑸줉�쓣 �뼸�뼱�궡�뒗 硫붿냼�뱶
-	public MngrDataBean[] getBooks(String book_kind,int count)
+	public MngrDataBean[] getBooks(String kind,int count)
     throws Exception {
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -301,11 +295,11 @@ public class MngrDBBean {
         try {
             conn = getConnection();
             
-            String sql = "select * from book where book_kind = ? ";
+            String sql = "select * from book where kind = ? ";
             sql += "order by reg_date desc limit ?,?";
             
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, book_kind);
+            pstmt.setString(1, kind);
             pstmt.setInt(2, 0);
             pstmt.setInt(3, count);
         	rs = pstmt.executeQuery();
@@ -314,17 +308,13 @@ public class MngrDBBean {
                 bookList = new MngrDataBean[count];
                 do{
                 	MngrDataBean book= new MngrDataBean();
-                    book.setBook_id(rs.getInt("book_id"));
-                    book.setBook_kind(rs.getString("book_kind"));
-                    book.setBook_title(rs.getString("book_title"));
-                    book.setBook_price(rs.getInt("book_price"));
-                    book.setBook_count(rs.getShort("book_count"));
-                    book.setAuthor(rs.getString("author"));
-                    book.setPublishing_com(rs.getString("publishing_com"));
-                    book.setPublishing_date(rs.getString("publishing_date"));
-                    book.setBook_image(rs.getString("book_image"));
-                    book.setDiscount_rate(rs.getByte("discount_rate"));
-                    book.setReg_date(rs.getTimestamp("reg_date"));
+                    book.setPro_num(rs.getString("pro_num"));
+                    book.setTitle(rs.getString("title"));
+                    book.setPro_desc(rs.getString("pro_desc"));
+                    book.setPrice(rs.getInt("price"));
+                    book.setBegin_date(rs.getDate("begin_date"));
+                    book.setEnd_date(rs.getDate("end_date"));
+                    book.setTitle_image(rs.getString("title_img"));
                      
                     bookList[i]=book;
                      
@@ -346,7 +336,7 @@ public class MngrDBBean {
 	
 	// bookId�뿉 �빐�떦�븯�뒗 梨낆쓽 �젙蹂대�� �뼸�뼱�궡�뒗 硫붿냼�뱶濡� 
     //�벑濡앸맂 梨낆쓣 �닔�젙�븯湲� �쐞�빐 �닔�젙�뤌�쑝濡� �씫�뼱�뱾湲곗씠湲� �쐞�븳 硫붿냼�뱶
-	public MngrDataBean getBook(int bookId)
+	public MngrDataBean getBook(String proNum)
     throws Exception {
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -357,24 +347,20 @@ public class MngrDBBean {
             conn = getConnection();
             
             pstmt = conn.prepareStatement(
-            	"select * from book where book_id = ?");
-            pstmt.setInt(1, bookId);
+            	"select * from book where pro_num = ?");
+            pstmt.setString(1, proNum);
             
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
                 book = new MngrDataBean();
-                
-                book.setBook_kind(rs.getString("book_kind"));
-                book.setBook_title(rs.getString("book_title"));
-                book.setBook_price(rs.getInt("book_price"));
-                book.setBook_count(rs.getShort("book_count"));
-                book.setAuthor(rs.getString("author"));
-                book.setPublishing_com(rs.getString("publishing_com"));
-                book.setPublishing_date(rs.getString("publishing_date"));
-                book.setBook_image(rs.getString("book_image"));
-                book.setBook_content(rs.getString("book_content"));
-                book.setDiscount_rate(rs.getByte("discount_rate"));
+                book.setPro_num(rs.getString("pro_num"));
+                book.setTitle(rs.getString("title"));
+                book.setPro_desc(rs.getString("pro_desc"));
+                book.setPrice(rs.getInt("price"));
+                book.setBegin_date(rs.getDate("begin_date"));
+                book.setEnd_date(rs.getDate("end_date"));
+                book.setTitle_image(rs.getString("title_img"));
 			}
         } catch(Exception ex) {
             ex.printStackTrace();
@@ -399,23 +385,20 @@ public class MngrDBBean {
         try {
             conn = getConnection();
             
-            sql = "update book set book_kind=?,book_title=?,book_price=?";
+            sql = "update book set kind=?,book_title=?,book_price=?";
             sql += ",book_count=?,author=?,publishing_com=?,publishing_date=?";
             sql += ",book_image=?,book_content=?,discount_rate=?";
-            sql += " where book_id=?";
+            sql += " where pro_num=?";
             
             pstmt = conn.prepareStatement(sql);
             
-            pstmt.setString(1, book.getBook_kind());
-            pstmt.setString(2, book.getBook_title());
-            pstmt.setInt(3, book.getBook_price());
-            pstmt.setShort(4, book.getBook_count());
-            pstmt.setString(5, book.getAuthor());
-            pstmt.setString(6, book.getPublishing_com());
-			pstmt.setString(7, book.getPublishing_date());
-			pstmt.setString(8, book.getBook_image());
-			pstmt.setString(9, book.getBook_content());
-			pstmt.setByte(10, book.getDiscount_rate());
+            pstmt.setString(1, book.getKind()+book.getPublishing_date()+book.getGrade());
+            pstmt.setString(2, book.getTitle());
+            pstmt.setString(3, book.getPro_desc());
+            pstmt.setInt(4, book.getPrice());
+            pstmt.setDate(5, book.getBegin_date());
+            pstmt.setDate(6, book.getEnd_date());
+            pstmt.setString(7, book.getTitle_image());
 			pstmt.setInt(11, bookId);
             
             pstmt.executeUpdate();
@@ -441,7 +424,7 @@ public class MngrDBBean {
 			conn = getConnection();
 
             pstmt = conn.prepareStatement(
-            	"delete from book where book_id=?");
+            	"delete from product where pro_num=?");
             pstmt.setInt(1, bookId);
             
             pstmt.executeUpdate();

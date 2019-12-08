@@ -5,4 +5,3 @@
 <c:if test="${check == 1}">
 	<c:set var="id" value="${id}" scope="session"/>
 </c:if>
-<p id="ck">${check}
