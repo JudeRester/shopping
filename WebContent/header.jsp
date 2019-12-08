@@ -5,16 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="css/header.css">
-<link rel="stylesheet" type="text/css" href="css/loginmodal.css">
+<link rel="stylesheet" type="text/css" href="/shopping/css/header.css">
+<link rel="stylesheet" type="text/css" href="/shopping/css/loginmodal.css">
 <link rel="stylesheet" type="text/css"
 	href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
-<script src="js/count.js"></script>
-<script src="js/endsoon.js"></script>
-<script src="js/modal.js"></script>
+<script src="/shopping/js/count.js"></script>
+<script src="/shopping/js/endsoon.js"></script>
+<script src="/shopping/js/modal.js"></script>
 </head>
 <body>
 	<div id="logo">
@@ -24,7 +24,7 @@
 				<li><a href="javascript:void(0)" id="join">회원가입</a></li>
 			</ul>
 		</div>
-		<a href="javascript:void(0)"><img src="images/main_Logo.png"
+		<a href="javascript:void(0)"><img src="/shopping/images/main_Logo.png"
 			alt="" /></a>
 
 	</div>
@@ -32,8 +32,15 @@
 		<ul>
 			<li><a href="#">상품</a>
 				<ul>
-					<li><a href="#">전체 목록</a></li>
-					<li><a href="#">카테고리별</a></li>
+					<li><a href="/shopping/products/prod_list.jsp?category=all">전체 목록</a></li>
+					<li id="cat"><a href="#" >카테고리별</a>
+						<ul>
+							<li><a href="">아케이드</a></li>
+							<li><a href="">FPS</a></li>
+							<li><a href="">RPG</a></li>
+							<li><a href="">RTS</a></li>
+						</ul>
+					</li>
 					<li><a href="#">판매 예정</a></li>
 				</ul></li>
 			<li><a href="#">소식</a>
