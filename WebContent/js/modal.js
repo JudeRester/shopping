@@ -29,13 +29,9 @@ $(document).ready(function() {
 			data : query,
 			success : function(data) {
 				var str1 = '<p id="ck">';
-//				alert(str1);
 				var loc = data.indexOf(str1);
-//				alert(loc);
 				var len = str1.length;
-//				alert(len);
 				var check = data.substr(loc + len, 1);
-//				alert(check);
 				if (check == "1") {//
 					$(location).attr('href', "/shopping/index.do");
 //					window.location.href = "/shopping/index.do";
@@ -49,7 +45,6 @@ $(document).ready(function() {
 				}
 			}
 		});
-//		alert("회원");
 	});
 	
 	$("#mLogin").click(function() {// [관리자로그인]버튼 클릭
@@ -64,13 +59,9 @@ $(document).ready(function() {
 			data : query,
 			success : function(data) {
 				var str1 = '<p id="ck">';
-//				alert(str1);
 				var loc = data.indexOf(str1);
-//				alert(loc);
 				var len = str1.length;
-//				alert(len);
 				var check = data.substr(loc + len, 1);
-//				alert(check);
 				if (check == "1") {//
 					console.log("asdf");
 					$(location).attr('href', "/shopping/mg/managerMain.do");
@@ -85,7 +76,6 @@ $(document).ready(function() {
 				}
 			}
 		});
-//		alert("관리자");
 	});
 
 	$("#logout").click(function() {// [로그아웃]버튼 클릭

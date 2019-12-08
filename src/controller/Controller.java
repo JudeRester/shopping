@@ -119,6 +119,7 @@ public class Controller extends HttpServlet {
 		CommandAction com = null;
 		try {
 			String command = request.getRequestURI();
+			System.out.println(command);
 			if (command.indexOf(request.getContextPath()) == 0)
 				command = command.substring(request.getContextPath().length());
 			com = (CommandAction) commandMap.get(command);
