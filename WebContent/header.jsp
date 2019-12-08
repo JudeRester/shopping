@@ -6,15 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="css/header.css">
-<link rel="stylesheet" type="text/css" href="css/loginmodal.css">
+<link rel="stylesheet" type="text/css" href="/shopping/css/header.css">
+<link rel="stylesheet" type="text/css"
+	href="/shopping/css/loginmodal.css">
 <link rel="stylesheet" type="text/css"
 	href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
-<script src="js/count.js"></script>
-<script src="js/modal.js"></script>
+<script src="/shopping/js/count.js"></script>
+<script src="/shopping/js/modal.js"></script>
 </head>
 <body>
 	<div id="logo">
@@ -37,16 +38,23 @@
 			</c:when>
 		</c:choose>
 
-		<a href="javascript:void(0)"><img src="images/main_Logo.png"
-			alt="" /></a>
+		<a href="javascript:void(0)"><img
+			src="/shopping/images/main_Logo.png" alt="" /></a>
 
 	</div>
 	<div id="menu">
 		<ul>
 			<li><a href="#">상품</a>
 				<ul>
-					<li><a href="#">전체 목록</a></li>
-					<li><a href="#">카테고리별</a></li>
+					<li><a href="/shopping/products/prod_list.jsp?category=all">전체 목록</a></li>
+					<li id="cat"><a href="#" >카테고리별</a>
+						<ul>
+							<li><a href="">아케이드</a></li>
+							<li><a href="">FPS</a></li>
+							<li><a href="">RPG</a></li>
+							<li><a href="">RTS</a></li>
+						</ul>
+					</li>
 					<li><a href="#">판매 예정</a></li>
 				</ul></li>
 			<li><a href="#">소식</a>
@@ -76,7 +84,7 @@
 					<tr>
 						<td></td>
 						<td><input type="button" value="로그인" id="uLogin" /> <input
-							type="button" value="취소" class="cancel" /></td>
+							type="reset" value="취소" class="cancel" /></td>
 					</tr>
 				</table>
 			</form>
@@ -90,6 +98,7 @@
 					<tr>
 						<td><label for="id_join">아이디</label></td>
 						<td><input type="text" id="id_join" name="id" /></td>
+						<td><input type="button" id="checkId" value="중복확인" /></td>
 					</tr>
 					<tr>
 						<td><label for="pass_join">비밀번호</label></td>
@@ -104,8 +113,8 @@
 						<td><input type="date" id="birth" name="birth" /></td>
 					</tr>
 					<tr>
-						<td><label for="addr">주소</label></td>
-						<td><input type="text" id="addr" name="addr" /></td>
+						<td><label for="address">주소</label></td>
+						<td><input type="text" id="address" name="address" /></td>
 					</tr>
 					<tr>
 						<td><label for="phone">전화번호</label></td>
@@ -117,8 +126,8 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="submit" value="회원가입" /> <input
-							type="button" value="취소" class="cancel" /></td>
+						<td><input type="button" value="회원가입" id="process"/> <input
+							type="reset" value="취소" class="cancel" /></td>
 					</tr>
 				</table>
 			</form>

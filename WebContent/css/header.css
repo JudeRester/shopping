@@ -68,9 +68,23 @@ a {
 	display: block;
 }
 
-#menu>ul>li>ul>li:hover {
-	transition: ease 1s;
+#cat>ul {
+	background-color:#000000;
+	z-index : 6; 
+	width: 130px;
+	display: none;
+	left:130px;
+	top:30px;
+	position: absolute;
+	font-size: 14px;
 }
+#cat:hover>ul {
+	display: block;
+}
+
+/* #menu>ul>li>ul>li:hover {
+	transition: ease 1s;
+} */
 
 footer {
 	width: 960px;

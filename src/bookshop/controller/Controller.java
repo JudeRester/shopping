@@ -121,6 +121,7 @@ public class Controller extends HttpServlet {
 		CommandAction com=null;
 		try {
 			String command = request.getRequestURI();
+			System.out.println("command : "+command);
 	        if(command.indexOf(request.getContextPath()) == 0) 
 	           command = command.substring(request.getContextPath().length());
 	        com = (CommandAction)commandMap.get(command);  
@@ -128,6 +129,7 @@ public class Controller extends HttpServlet {
 		}catch(Throwable e) {
 			e.printStackTrace();
 		}
+		System.out.println("view : " +view);
 		request.setAttribute("cont",view);
 	    RequestDispatcher dispatcher = 
 	       request.getRequestDispatcher(view);
