@@ -2,9 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="./header.jsp"%>
 <link rel="stylesheet" type="text/css" href="css/index.css">
-<script type="text/javascript"
-	src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
+<script src="js/endsoon.js"></script>
 <div id="mid">
 	<h3>마감 임박</h3>
 	<div id="endsoon">

@@ -46,6 +46,7 @@ $(document).ready(function() {
 				}
 			}
 		});
+
 		alert("회원");
 	});
 	
@@ -79,6 +80,8 @@ $(document).ready(function() {
 			}
 		});
 		alert("관리자");
+
+
 	});
 
 	$("#logout").click(function() {// [로그아웃]버튼 클릭
