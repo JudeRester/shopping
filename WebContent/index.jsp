@@ -27,7 +27,7 @@
 	</div>
 </div>
 <section>
-	<article class="arti">
+	<article class="arti">																		
 		<a href="javascript:void(0)"><img src="images/test.png" alt="" /></a>
 		<div>판매중인 상품</div>
 	</article>
