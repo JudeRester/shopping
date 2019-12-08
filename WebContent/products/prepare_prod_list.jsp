@@ -3,23 +3,10 @@
 <%@ include file="../header.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="/shopping/css/prod_list.css">
-<script src="/shopping/js/prod_list.js"></script>
+<script src="/shopping/js/prepare_prod_list.js"></script>
 <section>
 	<h3>
-		<c:choose>
-			<c:when test="${param.category=='RTS' }">
-				RTS
-			</c:when>
-			<c:when test="${param.category=='ACT' }">
-				액션
-			</c:when>
-			<c:when test="${param.category=='FPS' }">
-				FPS
-			</c:when>
-			<c:when test="${param.category=='RPG' }">
-				RPG
-			</c:when>
-		</c:choose>
+판매 예정 상품
 	</h3>
 	<ul>
 		<c:choose>
@@ -31,14 +18,7 @@
 					<li><a
 						href="/shopping/products/prod_info.do?pro_num=${prod.pro_num }"><img
 							src="${prod.title_img }" alt="" /></a>
-						<div class="count" id="${prod.pro_num }"></div></li>
-					<script>
-						var orgDate = "${prod.strEnd_date}";
-						var dateArray = orgDate.split(",");
-						var date = new Date(dateArray[0], dateArray[1] - 1,
-								dateArray[2]);
-						getTimer(date, "${prod.pro_num}");
-					</script>
+						</li>
 				</c:forEach>
 			</c:when>
 		</c:choose>

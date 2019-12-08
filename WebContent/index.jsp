@@ -6,11 +6,14 @@
 <script src="js/count.js"></script>
 <div id="mid">
 	<h3>마감 임박</h3>
-	<div id="endsoon">		<ul>
+	<div id="endsoon">
+		<ul>
 			<c:forEach var="prod" items="${prod_List}">
-				<li><a href="/shopping/products/prod_info.do?pro_num=${prod.pro_num }"><img src="${prod.title_img }" alt="" /></a>
+				<li><a
+					href="/shopping/products/prod_info.do?pro_num=${prod.pro_num }"><img
+						src="${prod.title_img }" alt="" /></a>
 					<div class="count" id="${prod.pro_num }"></div></li>
-					
+
 				<script>
 					var orgDate = "${prod.strEnd_date}";
 					var dateArray = orgDate.split(",");
@@ -39,7 +42,8 @@
 	</article>
 	<article class="arti">
 		<div>판매예정 상품</div>
-		<a href="javascript:void(0)"><img src="images/test.png" alt="" /></a>
+		<a href="/shopping/products/prepare_prod_list.do"><img
+			src="images/test.png" alt="" /></a>
 
 	</article>
 

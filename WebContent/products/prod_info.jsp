@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<jsp:useBean id="now" class="java.util.Date" />
 <%@ include file="../header.jsp"%>
+<fmt:formatDate value="${now}" pattern="yyyy-MM-dd HH:mm:ss" var="today" />
+
 <link rel="stylesheet" type="text/css"
 	href="/shopping/css/prod_info.css">
 <script src="/shopping/js/prod_info.js"></script>
@@ -10,7 +12,7 @@
 		<ul>
 			<c:forEach var="images" items="${images}">
 				<li><img src="${images }.jpg" alt="" /></li>
-				
+
 			</c:forEach>
 		</ul>
 	</div>
@@ -32,12 +34,26 @@
 					disabled="disabled" />
 			</c:when>
 			<c:when test="${!empty sessionScope.id }">
-				<input type="text" id="userid" value="${sessionScope.id }" hidden="hidden"/>
-				<input type="text" id="pro_num" value="${param.pro_num }" hidden="hidden"/>
+				<input type="text" id="userid" value="${sessionScope.id }"
+					hidden="hidden" />
+				<input type="text" id="pro_num" value="${param.pro_num }"
+					hidden="hidden" />
 				<input type="button" id="addCart" value="장바구니 넣기" />
+
 			</c:when>
 		</c:choose>
-
+		<c:choose>
+			<c:when test="${prod.begin_date>today }">
+				<script>
+					$("#addCart").attr('disabled','disabled');
+				</script>
+			</c:when>
+			<c:when test="${prod.end_date<today }">
+				<script>
+					$("#addCart").attr('disabled','disabled');
+				</script>
+			</c:when>
+		</c:choose>
 	</article>
 	<!-- 	<article class="arti_2">
 		권장사양

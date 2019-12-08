@@ -63,9 +63,8 @@ $(document).ready(function() {
 				var len = str1.length;
 				var check = data.substr(loc + len, 1);
 				if (check == "1") {//
-					console.log("asdf");
-					$(location).attr('href', "/shopping/mg/managerMain.do");
-//					window.location.href = "/shopping/mg/managerMain.do";
+//					$(location).attr('href', "/shopping/mg/managerMain.do");
+					window.location.href = "/shopping/mg/managerMain.do";
 				} else if (check == "0") {
 					alert("비밀번호 틀림");
 					$("#pass").val("");

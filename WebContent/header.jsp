@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,7 +56,7 @@
 							<li><a href="/shopping/products/prod_list.do?category=RTS">RTS</a></li>
 						</ul>
 					</li>
-					<li><a href="#">판매 예정</a></li>
+					<li><a href="/shopping/products/prepare_prod_list.do">판매 예정</a></li>
 				</ul></li>
 			<li><a href="#">소식</a>
 				<ul>
