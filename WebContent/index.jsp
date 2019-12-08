@@ -9,7 +9,7 @@
 	<div id="endsoon">
 		<ul>
 			<c:forEach var="prod" items="${prod_List}">
-				<li><a href="prod_info.do?pro_num=${prod.pro_num }"><img src="${prod.title_img }" alt="" /></a>
+				<li><a href="/shopping/products/prod_info.do?pro_num=${prod.pro_num }"><img src="${prod.title_img }" alt="" /></a>
 					<div class="count" id="${prod.pro_num }"></div></li>
 					
 				<script>
