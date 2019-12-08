@@ -79,7 +79,7 @@ $(document).ready(function() {
 		} else {// 아이디를 입력하지 않고 [ID중복확인]버튼을 클릭한 경우
 			alert("사용할 아이디를 입력");
 			$("#id_join").focus();
-
+		}
 	});
 	$("#process").click(function() {// [가입하기]버튼 클릭
 		var query = {
@@ -100,6 +100,5 @@ $(document).ready(function() {
 				window.location.href = "/shopping/index.do";
 			}
 		});
-
 	});
 });
