@@ -11,6 +11,7 @@ public class ProductDTO {
 	private Date end_date;
 	private String title_img;
 	private String strEnd_date;
+	
 	public String getPro_num() {
 		return pro_num;
 	}

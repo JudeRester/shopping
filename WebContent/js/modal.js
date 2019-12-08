@@ -45,11 +45,6 @@ $(document).ready(function() {
 				}
 			}
 		});
-<<<<<<< HEAD
-
-//		alert("회원");
-=======
->>>>>>> 243fa13ce28b026e1e2d79f5c46e88ada343a637
 	});
 	
 	$("#mLogin").click(function() {// [관리자로그인]버튼 클릭
@@ -84,12 +79,6 @@ $(document).ready(function() {
 				}
 			}
 		});
-<<<<<<< HEAD
-//		alert("관리자");
-
-
-=======
->>>>>>> 243fa13ce28b026e1e2d79f5c46e88ada343a637
 	});
 
 	$("#logout").click(function() {// [로그아웃]버튼 클릭

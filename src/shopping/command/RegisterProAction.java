@@ -7,19 +7,17 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bookshop.bean.LogonDBBean;
-import bookshop.bean.LogonDataBean;
+import shopping.bean.LoginDTO;
+import shopping.databases.LoginDB;
 
 public class RegisterProAction implements CommandAction {
 
 	@Override
 	public String requestPro(HttpServletRequest request,
 			HttpServletResponse response) throws Throwable {
-		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		
-		//�쉶�썝媛��엯 �젙蹂�
-		LogonDataBean member = new LogonDataBean();
+		LoginDTO member = new LoginDTO();
 		member.setId(request.getParameter("id"));
         member.setPasswd(request.getParameter("passwd"));
         member.setName(request.getParameter("name"));
@@ -34,7 +32,7 @@ public class RegisterProAction implements CommandAction {
 		member.setEmail(request.getParameter("email"));
          
 		//�쉶�썝媛��엯泥섎━
-        LogonDBBean dbPro = LogonDBBean.getInstance();
+        LoginDB dbPro = LoginDB.getInstance();
         dbPro.insertMember(member);
 		
 		return "/member/registerPro.jsp";
