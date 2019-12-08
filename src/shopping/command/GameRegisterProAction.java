@@ -1,6 +1,5 @@
 package shopping.command;
 
-import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,8 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import bookshop.bean.MngrDataBean;
 import bookshop.bean.MngrDBBean;
+import bookshop.bean.MngrDataBean;
+import shopping.bean.ProdReqDTO;
 
 public class GameRegisterProAction implements CommandAction {
 
@@ -64,8 +64,25 @@ public class GameRegisterProAction implements CommandAction {
 		String kind = imageUp.getParameter("kind");
 		String title = imageUp.getParameter("title");
 		String pro_desc = imageUp.getParameter("pro_desc");
-		String min_sys = imageUp.getParameter("min_sys");
-		String rec_sys = imageUp.getParameter("rec_sys");
+		//최저사양
+		ProdReqDTO mprd = new ProdReqDTO();
+		mprd.setCpu(imageUp.getParameter("mcpu"));
+		mprd.setDirectx(imageUp.getParameter("mdirectx"));
+		mprd.setDirectx(imageUp.getParameter("mdirectx"));
+		mprd.setMem(imageUp.getParameter("mmem"));
+		mprd.setOs(imageUp.getParameter("mos"));
+		mprd.setVga(imageUp.getParameter("mvga"));
+		//권장사양
+		ProdReqDTO hprd = new ProdReqDTO();
+		hprd.setCpu(imageUp.getParameter("hcpu"));
+		hprd.setDirectx(imageUp.getParameter("hdirectx"));
+		hprd.setDisk_storage(imageUp.getParameter("hdisk_storage"));
+		hprd.setMem(imageUp.getParameter("hmem"));
+		hprd.setOs(imageUp.getParameter("hos"));
+		hprd.setVga(imageUp.getParameter("hvga"));
+		
+//		String min_sys = imageUp.getParameter("min_sys");
+//		String rec_sys = imageUp.getParameter("rec_sys");
 		String price = imageUp.getParameter("price");
 //		String count = imageUp.getParameter("count");
 		String publishing_com = imageUp.getParameter("publishing_com");
@@ -86,8 +103,6 @@ public class GameRegisterProAction implements CommandAction {
 		book.setKind(kind);
 		book.setTitle(title);
 		book.setPro_desc(pro_desc);
-		book.setMin_sys(min_sys);
-		book.setRec_sys(rec_sys);
 		book.setPrice(Integer.parseInt(price));
 //		book.setCount(Short.parseShort(count));
 		book.setPublishing_com(publishing_com);
@@ -113,7 +128,8 @@ public class GameRegisterProAction implements CommandAction {
 		//DB연동 - 넘어온 정보를 테이블의 레코드로 추가
 		MngrDBBean bookProcess = MngrDBBean.getInstance();
 		bookProcess.insertBook(book);
-		
+		bookProcess.insertMreq(mprd, book);
+		bookProcess.insertHreq(hprd, book);
 		request.setAttribute("kind", kind);
 		System.out.println(kind);
 		System.out.println("DBinsert성공");

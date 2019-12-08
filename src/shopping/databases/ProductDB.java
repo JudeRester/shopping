@@ -12,11 +12,13 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import shopping.bean.ProdReqDTO;
 import shopping.bean.ProductDTO;
 
 public class ProductDB {
 	private static ProductDB instance = new ProductDB();
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy,MM,dd");
+
 	public static ProductDB getInstance() {
 		return instance;
 	}
@@ -79,7 +81,8 @@ public class ProductDB {
 		}
 		return prod_List;
 	}
-	public List<ProductDTO> getList(String category){
+
+	public List<ProductDTO> getList(String category) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -146,8 +149,8 @@ public class ProductDB {
 			if ("all".contentEquals(category))
 				category = "%";
 			pstmt.setString(1, category + "%");
-			pstmt.setInt(2, page * 3+1);
-			pstmt.setInt(3, page * 3+3);
+			pstmt.setInt(2, page * 3 + 1);
+			pstmt.setInt(3, page * 3 + 3);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				prod_List = new ArrayList<ProductDTO>();
@@ -185,8 +188,8 @@ public class ProductDB {
 		}
 		return prod_List;
 	}
-	
-	public List<ProductDTO> getprepareList(){
+
+	public List<ProductDTO> getprepareList() {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -235,7 +238,7 @@ public class ProductDB {
 		}
 		return prod_List;
 	}
-	
+
 	public List<ProductDTO> getMorePrepareList(int page) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -247,8 +250,8 @@ public class ProductDB {
 			String sql = "select * from (select row_number() over(order by end_date asc) as rownum,pro_num,title,pro_desc,price,begin_date,end_date,title_img from product where end_date > now() and begin_date>now() order by end_date)c where rownum between ? and ?";
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, page * 3+1);
-			pstmt.setInt(2, page * 3+3);
+			pstmt.setInt(1, page * 3 + 1);
+			pstmt.setInt(2, page * 3 + 3);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				prod_List = new ArrayList<ProductDTO>();
@@ -286,6 +289,7 @@ public class ProductDB {
 		}
 		return prod_List;
 	}
+
 	public ProductDTO getProInfo(String pro_num) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -332,11 +336,12 @@ public class ProductDB {
 		}
 		return prod;
 	}
+
 	public List<String> getScreenShots(String pro_num) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		List<String> images=new ArrayList<String>();
+		List<String> images = new ArrayList<String>();
 		try {
 			conn = getConnection();
 
@@ -346,7 +351,7 @@ public class ProductDB {
 			pstmt.setString(1, pro_num);
 			rs = pstmt.executeQuery();
 
-			while(rs.next())
+			while (rs.next())
 				images.add(rs.getString("loc"));
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -368,5 +373,90 @@ public class ProductDB {
 				}
 		}
 		return images;
+	}
+
+	public ProdReqDTO getMreq(String pro_num) {
+		ProdReqDTO prd = new ProdReqDTO();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = getConnection();
+
+			String sql = "select * from pro_req where req_code = ?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "m"+pro_num);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				prd.setCpu(rs.getString("cpu"));
+				prd.setDirectx(rs.getString("directx"));
+				prd.setDisk_storage(rs.getString("disk_storage"));
+				prd.setMem(rs.getString("mem"));
+				prd.setOs(rs.getString("os"));
+				prd.setVga(rs.getString("vga"));
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
+		}
+		return prd;
+	}
+	public ProdReqDTO getHreq(String pro_num) {
+		ProdReqDTO prd = new ProdReqDTO();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = getConnection();
+			
+			String sql = "select * from pro_req where req_code = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "h"+pro_num);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				prd.setCpu(rs.getString("cpu"));
+				prd.setDirectx(rs.getString("directx"));
+				prd.setDisk_storage(rs.getString("disk_storage"));
+				prd.setMem(rs.getString("mem"));
+				prd.setOs(rs.getString("os"));
+				prd.setVga(rs.getString("vga"));
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
+		}
+		return prd;
 	}
 }

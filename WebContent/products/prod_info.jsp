@@ -25,41 +25,114 @@
 </div>
 <section>
 	<article class="arti">
-		제목 : ${prod.title} <br /> 가격 : \ ${prod.price }<br /> 게임 정보 :
-		${prod.pro_desc }<br />
-		<c:choose>
-			<c:when test="${empty sessionScope.id }">
+		<table>
+			<tr>
+				<td>게임 정보 : ${prod.pro_desc }</td>
+				<td>제목 : ${prod.title} <br /> 가격 : \ ${prod.price }<br /> <c:choose>
+						<c:when test="${empty sessionScope.id }">
 
-				<input type="button" id="addCart" value="장바구니 넣기"
-					disabled="disabled" />
-			</c:when>
-			<c:when test="${!empty sessionScope.id }">
-				<input type="text" id="userid" value="${sessionScope.id }"
-					hidden="hidden" />
-				<input type="text" id="pro_num" value="${param.pro_num }"
-					hidden="hidden" />
-				<input type="button" id="addCart" value="장바구니 넣기" />
+							<input type="button" id="addCart" value="장바구니 넣기"
+								disabled="disabled" />
+						</c:when>
+						<c:when test="${!empty sessionScope.id }">
+							<input type="text" id="userid" value="${sessionScope.id }"
+								hidden="hidden" />
+							<input type="text" id="pro_num" value="${param.pro_num }"
+								hidden="hidden" />
+							<input type="button" id="addCart" value="장바구니 넣기" />
 
-			</c:when>
-		</c:choose>
-		<c:choose>
-			<c:when test="${prod.begin_date>today }">
-				<script>
-					$("#addCart").attr('disabled','disabled');
-				</script>
-			</c:when>
-			<c:when test="${prod.end_date<today }">
-				<script>
-					$("#addCart").attr('disabled','disabled');
-				</script>
-			</c:when>
-		</c:choose>
+						</c:when>
+					</c:choose> <c:choose>
+						<c:when test="${prod.begin_date>today }">
+							<script>
+								$("#addCart").attr('disabled', 'disabled');
+							</script>
+						</c:when>
+						<c:when test="${prod.end_date<today }">
+							<script>
+								$("#addCart").attr('disabled', 'disabled');
+							</script>
+						</c:when>
+					</c:choose>
+				</td>
+			</tr>
+		</table>
+
+
 	</article>
 	<!-- 	<article class="arti_2">
 		권장사양
 	</article> -->
-	<article class="arti_2">최소사양</article>
-	<article class="arti_2">권장사양</article>
+	<article class="arti_2">
+		<table>
+			<thead>
+				<tr>
+					<th colspan="2">최소사양</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>OS</td>
+					<td>${mprd.os }</td>
+				</tr>
+				<tr>
+					<td>CPU</td>
+					<td>${mprd.cpu }</td>
+				</tr>
+				<tr>
+					<td>Memory</td>
+					<td>${mprd.mem }</td>
+				</tr>
+				<tr>
+					<td>VGA</td>
+					<td>${mprd.vga }</td>
+				</tr>
+				<tr>
+					<td>Direct X</td>
+					<td>${mprd.directx }</td>
+				</tr>
+				<tr>
+					<td>Disk Storage</td>
+					<td>${mprd.disk_storage }</td>
+				</tr>
+			</tbody>
+		</table>
+	</article>
+	<article class="arti_2">
+		<table>
+			<thead>
+				<tr>
+					<th colspan="2">권장사양</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>OS</td>
+					<td>${hprd.os }</td>
+				</tr>
+				<tr>
+					<td>CPU</td>
+					<td>${hprd.cpu }</td>
+				</tr>
+				<tr>
+					<td>Memory</td>
+					<td>${hprd.mem }</td>
+				</tr>
+				<tr>
+					<td>VGA</td>
+					<td>${hprd.vga }</td>
+				</tr>
+				<tr>
+					<td>Direct X</td>
+					<td>${hprd.directx }</td>
+				</tr>
+				<tr>
+					<td>Disk Storage</td>
+					<td>${hprd.disk_storage }</td>
+				</tr>
+			</tbody>
+		</table>
+	</article>
 
 </section>
 

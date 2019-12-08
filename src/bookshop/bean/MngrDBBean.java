@@ -11,8 +11,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import work.crypt.BCrypt;
-import work.crypt.SHA256;
+import shopping.bean.ProdReqDTO;
 
 public class MngrDBBean {
 	//MngrDBBean �쟾�뿭 媛앹껜 �깮�꽦 <- �븳媛쒖쓽 媛앹껜留� �깮�꽦�빐�꽌 怨듭쑀
@@ -83,29 +82,18 @@ public class MngrDBBean {
             conn = getConnection();
             String sql = "insert into product(pro_num,title,pro_desc,";
             sql += "price,begin_date,end_date,title_img) values (";           
-            pstmt = conn.prepareStatement(sql);
             
-            System.out.println("PK오류좀 안나게해라"+book.getKind()+book.getPublishing_date()+book.getGrade());
-            System.out.println(book.getKind()+"/"+book.getPublishing_date()+"/"+book.getGrade());      
-            System.out.println(book.getTitle_image());
             if(book.getKind().equals("RTS")) {
-            	sql	+= "concat(?,nextval(rts_seq),?,?,?,?,?,?)";
-
-            	 
+            	sql	+= "concat(?,Lpad(nextval(rts_seq),'4','0')),?,?,?,?,?,?)";
             }else if(book.getKind().equals("FPS")) {
-            	sql	+= "concat(?,nextval(fps_seq),?,?,?,?,?,?)";
-
-            	 
+            	sql	+= "concat(?,Lpad(nextval(fps_seq),'4','0')),?,?,?,?,?,?)";
             }else if(book.getKind().equals("액션")) {
-            	sql	+= "concat(?,nextval(act_seq),?,?,?,?,?,?)";
-
-            	 
+            	sql	+= "concat(?,Lpad(nextval(act_seq),'4','0')),?,?,?,?,?,?)";
             }else {
-            	sql	+= "concat(?,nextval(rpg_seq),?,?,?,?,?,?)";
-
+            	sql	+= "concat(?,Lpad(nextval(rpg_seq),'4','0')),?,?,?,?,?,?)";
             }
+            pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, book.getKind()+book.getPublishing_date()+book.getGrade());
-           
             pstmt.setString(2, book.getTitle());
             pstmt.setString(3, book.getPro_desc());
             pstmt.setInt(4, book.getPrice());
@@ -124,8 +112,74 @@ public class MngrDBBean {
         }
         System.out.println("inert성공");
     }
-    
-    //�씠誘몃벑濡앸맂 梨낆쓣 寃�利�
+    public void insertMreq(ProdReqDTO prd, MngrDataBean book) {
+    	Connection conn = null;
+        PreparedStatement pstmt = null;
+        try {
+            conn = getConnection();
+            String sql = "insert into pro_req values (";           
+            if(book.getKind().equals("RTS")) {
+            	sql	+= "concat(?,Lpad(Lastval(rts_seq),'4','0')),?,?,?,?,?,?)";
+            }else if(book.getKind().equals("FPS")) {
+            	sql	+= "concat(?,Lpad(Lastval(fps_seq),'4','0')),?,?,?,?,?,?)";
+            }else if(book.getKind().equals("액션")) {
+            	sql	+= "concat(?,Lpad(Lastval(act_seq),'4','0')),?,?,?,?,?,?)";
+            }else {
+            	sql	+= "concat(?,Lpad(Lastval(rpg_seq),'4','0')),?,?,?,?,?,?)";
+            }
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, "m"+book.getKind()+book.getPublishing_date()+book.getGrade());
+            pstmt.setString(2, prd.getOs());
+            pstmt.setString(3, prd.getCpu());
+            pstmt.setString(4, prd.getMem());
+            pstmt.setString(5, prd.getVga());
+            pstmt.setString(6, prd.getDirectx());
+            pstmt.setString(7, prd.getDisk_storage());
+            pstmt.executeUpdate();
+            
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            if (pstmt != null) 
+            	try { pstmt.close(); } catch(SQLException ex) {}
+            if (conn != null) 
+            	try { conn.close(); } catch(SQLException ex) {}
+        }
+    }
+    public void insertHreq(ProdReqDTO prd, MngrDataBean book) {
+    	Connection conn = null;
+    	PreparedStatement pstmt = null;
+    	try {
+    		conn = getConnection();
+    		String sql = "insert into pro_req values (";           
+    		if(book.getKind().equals("RTS")) {
+            	sql	+= "concat(?,Lpad(Lastval(rts_seq),'4','0')),?,?,?,?,?,?)";
+            }else if(book.getKind().equals("FPS")) {
+            	sql	+= "concat(?,Lpad(Lastval(fps_seq),'4','0')),?,?,?,?,?,?)";
+            }else if(book.getKind().equals("액션")) {
+            	sql	+= "concat(?,Lpad(Lastval(act_seq),'4','0')),?,?,?,?,?,?)";
+            }else {
+            	sql	+= "concat(?,Lpad(Lastval(rpg_seq),'4','0')),?,?,?,?,?,?)";
+            }
+            pstmt = conn.prepareStatement(sql);
+    		pstmt.setString(1, "h"+book.getKind()+book.getPublishing_date()+book.getGrade());
+    		pstmt.setString(2, prd.getOs());
+    		pstmt.setString(3, prd.getCpu());
+    		pstmt.setString(4, prd.getMem());
+    		pstmt.setString(5, prd.getVga());
+    		pstmt.setString(6, prd.getDirectx());
+    		pstmt.setString(7, prd.getDisk_storage());
+    		pstmt.executeUpdate();
+    		
+    	} catch(Exception ex) {
+    		ex.printStackTrace();
+    	} finally {
+    		if (pstmt != null) 
+    			try { pstmt.close(); } catch(SQLException ex) {}
+    		if (conn != null) 
+    			try { conn.close(); } catch(SQLException ex) {}
+    	}
+    }
 	public int registedBookconfirm(
 			String kind, String bookName, String author) 
 	throws Exception {

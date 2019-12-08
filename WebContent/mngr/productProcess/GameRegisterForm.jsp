@@ -33,10 +33,73 @@
            size="50" placeholder="제목" maxlength="50">
       <li><label for="pro_desc">내용</label>
           <textarea id="pro_desc" name="pro_desc" rows="13" cols="50"></textarea>
-      <li><label for="min_sys">최소사양</label>
-          <textarea id="min_sys" name="min_sys" rows="13" cols="50"></textarea>
-      <li><label for="rec_sys">권장사양</label>
-          <textarea id="rec_sys" name="rec_sys" rows="13" cols="50"></textarea>           
+      <li>
+          <table>
+			<thead>
+				<tr>
+					<th colspan="2">최소 사양</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>OS</td>
+					<td><input type="text" name="mos" /></td>
+				</tr>
+				<tr>
+					<td>CPU</td>
+					<td><input type="text" name="mcpu" /></td>
+				</tr>
+				<tr>
+					<td>Memory</td>
+					<td><input type="text" name="mmem" /></td>
+				</tr>
+				<tr>
+					<td>VGA</td>
+					<td><input type="text" name="mvga" /></td>
+				</tr>
+				<tr>
+					<td>Direct X</td>
+					<td><input type="text" name="mdirectx" /></td>
+				</tr>
+				<tr>
+					<td>Disk Storage</td>
+					<td><input type="text" name="mdisk_storage" /></td>
+				</tr>
+			</tbody>
+		</table>
+      <li><table>
+			<thead>
+				<tr>
+					<th colspan="2">권장 사양</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>OS</td>
+					<td><input type="text" name="hos" /></td>
+				</tr>
+				<tr>
+					<td>CPU</td>
+					<td><input type="text" name="hcpu" /></td>
+				</tr>
+				<tr>
+					<td>Memory</td>
+					<td><input type="text" name="hmem" /></td>
+				</tr>
+				<tr>
+					<td>VGA</td>
+					<td><input type="text" name="hvga" /></td>
+				</tr>
+				<tr>
+					<td>Direct X</td>
+					<td><input type="text" name="hdirectx" /></td>
+				</tr>
+				<tr>
+					<td>Disk Storage</td>
+					<td><input type="text" name="hdisk_storage" /></td>
+				</tr>
+			</tbody>
+		</table>         
       <li><label for="price">가격</label>
           <input id="price" name="price" type="text" 
            size="10" placeholder="가격" maxlength="9">원
