@@ -46,7 +46,7 @@
 		<ul>
 			<li><a href="#">상품</a>
 				<ul>
-					<li><a href="/shopping/products/prod_list.jsp?category=all">전체 목록</a></li>
+					<li><a href="/shopping/products/prod_list.do?category=all">전체 목록</a></li>
 					<li id="cat"><a href="#" >카테고리별</a>
 						<ul>
 							<li><a href="">아케이드</a></li>

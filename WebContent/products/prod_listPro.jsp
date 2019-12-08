@@ -5,5 +5,12 @@
 <li>
 <img src=${item.title_img } />
 <div class="count" id=${item.pro_num }></div>
+<script>
+				var orgDate = "${item.strEnd_date}";
+				var dateArray = orgDate.split(",");
+				var date = new Date(dateArray[0],dateArray[1]-1,dateArray[2]);
+				getTimer(date, "${item.pro_num}");
+				</script>
+
 </li>
 </c:forEach>

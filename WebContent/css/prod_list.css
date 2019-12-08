@@ -20,3 +20,11 @@ section>ul>li>img {
 	width: 300px;
 	height: 400px;
 }
+
+section>ul>li>.count {
+	position : absolute;
+	color : white;
+	text-shadow: 1px #000000;
+	left:20%;
+	top:70%;
+}
