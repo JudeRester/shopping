@@ -5,8 +5,12 @@ $(document).ready(function() {
 	$("#login").on("click", function() {
 		$(".login-modal").css("display", "block");
 	});
+	$("#mmlogin").on("click", function() {
+		$(".mlogin-modal").css("display", "block");
+	});
 	$(".cancel").on("click", function() {
 		$(".login-modal").css("display", "none");
+		$(".mlogin-modal").css("display", "none");
 		$(".join-modal").css("display", "none");
 	});
 	$("#join").on("click", function() {
@@ -28,8 +32,10 @@ $(document).ready(function() {
 				var loc = data.indexOf(str1);
 				var len = str1.length;
 				var check = data.substr(loc + len, 1);
+				alert(check);
 				if (check == "1") {//
-					window.location.href = "/shopping/index.do";
+					$(location).attr('href', "/shopping/index.do");
+//					window.location.href = "/shopping/index.do";
 				} else if (check == "0") {
 					alert("비밀번호 틀림");
 					$("#pass").val("");
@@ -40,6 +46,39 @@ $(document).ready(function() {
 				}
 			}
 		});
+		alert("회원");
+	});
+	
+	$("#mLogin").click(function() {// [관리자로그인]버튼 클릭
+		var query = {
+			mid : $("#mmid").val(),
+			mpasswd : $("#mpass").val()
+		};
+
+		$.ajax({
+			type : "POST",
+			url : "/shopping/mg/managerLoginPro.do",
+			data : query,
+			success : function(data) {
+				var str1 = '<p id="ck">';
+				var loc = data.indexOf(str1);
+				var len = str1.length;
+				var check = data.substr(loc + len, 1);
+				alert(check);
+				if (check == "1") {//
+					$(location).attr('href', "/shopping/mg/managerMain.do");
+//					window.location.href = "/shopping/mg/managerMain.do";
+				} else if (check == "0") {
+					alert("비밀번호 틀림");
+					$("#pass").val("");
+				} else {
+					alert("아이디 틀림");
+					$("#mid").val("");
+					$("#mpass").val("");
+				}
+			}
+		});
+		alert("관리자");
 	});
 
 	$("#logout").click(function() {// [로그아웃]버튼 클릭
@@ -47,7 +86,8 @@ $(document).ready(function() {
 			type : "POST",
 			url : "/shopping/logout.do",
 			success : function(data) {
-				window.location.href = "/shopping/index.do";
+				$(location).attr('href', "/shopping/index.do");
+//				window.location.href = "/shopping/index.do";
 			}
 		});
 	});
@@ -96,7 +136,8 @@ $(document).ready(function() {
 			url : "/shopping/registerPro.do",
 			data : query,
 			success : function(data) {
-				window.location.href = "/shopping/index.do";
+				$(location).attr('href', "/shopping/index.do");
+//				window.location.href = "/shopping/index.do";
 			}
 		});
 	});

@@ -40,21 +40,21 @@ public class MngrDBBean {
 		ResultSet rs= null;
 		int x=-1;
         
-		SHA256 sha = SHA256.getInsatnce();
+//		SHA256 sha = SHA256.getInsatnce();
 		try {
             conn = getConnection();
             
-            String orgPass = passwd;
-            String shaPass = sha.getSha256(orgPass.getBytes());
+//            String orgPass = passwd;
+//            String shaPass = sha.getSha256(orgPass.getBytes());
         	
             pstmt = conn.prepareStatement(
-              "select managerPasswd from manager where managerId = ?");
+              "select passwd from admin where id = ?");
             pstmt.setString(1, id);
             rs= pstmt.executeQuery();
 
 			if(rs.next()){//�빐�떦 �븘�씠�뵒媛� �엳�쑝硫� �닔�뻾
-				String dbpasswd= rs.getString("managerPasswd"); 
-				if(BCrypt.checkpw(shaPass,dbpasswd))
+				String dbpasswd= rs.getString("passwd"); 
+				if(passwd.equals(dbpasswd))	//BCrypt.checkpw(shaPass,dbpasswd)
 					x= 1; //�씤利앹꽦怨�
 				else
 					x= 0; //鍮꾨�踰덊샇 ��由�
@@ -68,7 +68,9 @@ public class MngrDBBean {
             if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
             if (conn != null) try { conn.close(); } catch(SQLException ex) {}
         }
+		System.out.println("m로그인 성공");
 		return x;
+		
 	}
     
     //梨� �벑濡� 硫붿냼�뱶
