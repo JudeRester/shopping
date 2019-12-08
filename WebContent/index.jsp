@@ -9,8 +9,9 @@
 	<div id="endsoon">
 		<ul>
 			<c:forEach var="prod" items="${prod_List}">
-				<li><img src="${prod.title_img }" alt="" />
+				<li><a href="/shopping/products/prod_info.do?pro_num=${prod.pro_num }"><img src="${prod.title_img }" alt="" /></a>
 					<div class="count" id="${prod.pro_num }"></div></li>
+					
 				<script>
 					var orgDate = "${prod.strEnd_date}";
 					var dateArray = orgDate.split(",");
@@ -32,11 +33,9 @@
 	</div>
 </div>
 <section>
-
 	<article class="arti">
 		<a href="/shopping/products/prod_list.do?category=all"><img
 			id="curr_sale" src="" alt="" /></a>
-
 		<div>판매중인 상품</div>
 	</article>
 	<article class="arti">

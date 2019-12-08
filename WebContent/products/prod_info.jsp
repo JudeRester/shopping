@@ -35,7 +35,15 @@
 		제목 : ${prod.title} <br />
 		가격 : \ ${prod.price }<br/>
 		게임 정보 : ${prod.pro_desc }<br/>
-		<input type="button" id="addCart" value="장바구니 넣기" />
+		<c:choose>
+			<c:when test="${empty sessionScope.id }">
+				<input type="button" id="addCart" value="장바구니 넣기" disabled="disabled"/>
+			</c:when>
+			<c:when test="${!empty sessionScope.id }">
+				<input type="button" id="addCart" value="장바구니 넣기" />
+			</c:when>
+		</c:choose>
+		
 	</article>
 <!-- 	<article class="arti_2">
 		권장사양
