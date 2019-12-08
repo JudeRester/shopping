@@ -45,6 +45,7 @@ $(document).ready(function() {
 				}
 			}
 		});
+
 	});
 	
 	$("#mLogin").click(function() {// [관리자로그인]버튼 클릭
@@ -79,6 +80,7 @@ $(document).ready(function() {
 				}
 			}
 		});
+
 	});
 
 	$("#logout").click(function() {// [로그아웃]버튼 클릭
