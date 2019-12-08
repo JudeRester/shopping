@@ -9,7 +9,6 @@ import shopping.bean.ProductDTO;
 import shopping.databases.ProductDB;
 
 public class prodListAction implements CommandAction {
-
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		List<ProductDTO> prod_List = null;

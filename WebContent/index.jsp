@@ -33,11 +33,9 @@
 	</div>
 </div>
 <section>
-
 	<article class="arti">
 		<a href="/shopping/products/prod_list.do?category=all"><img
 			id="curr_sale" src="" alt="" /></a>
-
 		<div>판매중인 상품</div>
 	</article>
 	<article class="arti">
