@@ -12,10 +12,15 @@
 				<li><img src="${prod.title_img }" alt="" />
 					<div class="count" id="${prod.pro_num }"></div></li>
 				<script>
-				var orgDate = "${prod.strEnd_date}";
-				var dateArray = orgDate.split(",");
-				var date = new Date(dateArray[0],dateArray[1]-1,dateArray[2]);
-				getTimer(date, "${prod.pro_num}");
+					var orgDate = "${prod.strEnd_date}";
+					var dateArray = orgDate.split(",");
+					var date = new Date(dateArray[0], dateArray[1] - 1,
+							dateArray[2]);
+					getTimer(date, "${prod.pro_num}");
+					img = "${prod.title_img}";
+					$(document).ready(function() {
+						$("#curr_sale").attr("src", img);
+					});
 				</script>
 			</c:forEach>
 		</ul>
@@ -27,8 +32,14 @@
 	</div>
 </div>
 <section>
+<<<<<<< HEAD
 	<article class="arti">																		
 		<a href="javascript:void(0)"><img src="images/test.png" alt="" /></a>
+=======
+	<article class="arti">
+		<a href="/shopping/products/prod_list.do?category=all"><img
+			id="curr_sale" src="" alt="" /></a>
+>>>>>>> 243fa13ce28b026e1e2d79f5c46e88ada343a637
 		<div>판매중인 상품</div>
 	</article>
 	<article class="arti">

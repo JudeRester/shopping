@@ -11,7 +11,6 @@ public class BookRegisterFormAction implements CommandAction {
 		// TODO Auto-generated method stub
 		
 		request.setAttribute("type", new Integer(0));
-		System.out.println("bookregisterfromacion들어옴");
 		return "/mngr/productProcess/bookRegisterForm.jsp";
 	}
 }

@@ -23,8 +23,8 @@
       <li><label for="kind">분류선택</label>
           <select id="kind" name="kind">
             <option value="RTS">RTS</option>
-            <option value="shooting">shooting</option>
-            <option value="racing">racing</option>
+            <option value="FPS">FPS</option>
+            <option value="ACT">액션</option>
             <option value="RPG">RPG</option>
             
           </select>
@@ -40,13 +40,7 @@
       <li><label for="price">가격</label>
           <input id="price" name="price" type="text" 
            size="10" placeholder="가격" maxlength="9">원
-      <li><label for="count">수량</label>
-          <input id="count" name="count" type="text" 
-           size="10" placeholder="수량" maxlength="5">개
-      <li><label for="publishing_com">출판사</label>
-          <input id="publishing_com" name="publishing_com" type="text" 
-           size="20" placeholder="출판사" maxlength="30">  
-      <li><label for="publishing_date">출판일</label>
+      <li><label for="publishing_date">발매일</label>
           <div id="publishing_date"> 
             <jsp:useBean id="nowTime" class="java.util.Date"></jsp:useBean>
             <fmt:formatDate var="nowTimeStr" pattern="yyyy-MM-dd" value="${nowTime}" />
@@ -75,9 +69,6 @@
           <input id="end_date" name="end_date" type="text" size="20" placeholder="1995-12-07" maxlength="10"> 
       <li><label for="book_image">게임 이미지</label>
           <input id="book_image" name="book_image" type="file">  
-      <li><label for="discount_rate">할인율</label>
-          <input id="discount_rate" name="discount_rate" type="text" 
-           size="5" placeholder="10" maxlength="2">  
       <li class="label2">
           <input type="submit" id="registBook" value="게임등록">
    </ul>
