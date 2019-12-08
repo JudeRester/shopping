@@ -44,6 +44,7 @@ public class ProductDTO {
 	public Date getEnd_date() {
 		return end_date;
 	}
+	
 	public void setEnd_date(Date end_date) {
 		this.end_date = end_date;
 	}

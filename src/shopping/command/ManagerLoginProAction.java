@@ -1,4 +1,4 @@
-package bookshop.command;
+package shopping.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

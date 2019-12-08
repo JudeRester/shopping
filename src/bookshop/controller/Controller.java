@@ -100,7 +100,6 @@ public class Controller extends HttpServlet {
 		throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		requestPro(request, response);//요청처리 메소드 호출
-		System.out.println("doGet성공");
 	}
 
 	/**
@@ -111,7 +110,6 @@ public class Controller extends HttpServlet {
 		throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		requestPro(request, response);//요청처리 메소드 호출
-		System.out.println("doPost성공");
 	}
 	
 	//웹브라우저의 요청을 분석하고, 해당 로직의 처리를 할 모델 실행 및

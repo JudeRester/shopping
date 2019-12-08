@@ -26,9 +26,10 @@
 #endsoon>ul>li>.count {
 	position : absolute;
 	color : white;
-	text-shadow: 1px #ffffff;
+	text-shadow: 1px #000000;
 	left:20%;
 	top:70%;
+	z-index: 20;
 }
 
 #endsoon>ul>li>img {

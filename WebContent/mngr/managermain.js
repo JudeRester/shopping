@@ -2,12 +2,12 @@ var status = true;
 
 $(document).ready(function(){
 	$("#registProduct").click(function(){//[상품등록]버튼 클릭
-		$(location).attr('href', "/shopping/mg/bookRegisterForm.do");
+		$(location).attr('href', "/shopping/mg/GameRegisterForm.do");
 //		window.location.href="/shopping/mg/bookRegisterForm.do";
 	});
 	
 	$("#updateProduct").click(function(){//[상품수정/삭제]버튼 클릭
-		$(location).attr('href', "/shopping/mg/bookList.do?kind=all");
+		$(location).attr('href', "/shopping/mg/GameList.do?kind=all");
 //		window.location.href="/shopping/mg/bookList.do?book_kind=all";
 	});
 	

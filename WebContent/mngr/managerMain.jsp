@@ -10,7 +10,7 @@
   <div id="mList"><p>로그인 하세요.
   </div>
 </c:if>
-<%-- <c:if test="${!empty sessionScope.id}"> --%>
+<c:if test="${!empty sessionScope.id}">
   <div id="mList">
      <ul>
         <li>상품관련 작업
@@ -26,4 +26,4 @@
         <li><button id="qna">상품 QnA답변</button>
      </ul>
   </div>
-<%-- </c:if>      --%>
+</c:if>     

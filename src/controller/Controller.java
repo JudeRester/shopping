@@ -23,8 +23,8 @@ import shopping.command.CommandAction;
 /**
  * Servlet implementation class Controller
  */
-//@WebServlet(urlPatterns = { "/Controller", "*.do" }, initParams = {
-//		@WebInitParam(name = "propertyConfig", value = "command.properties") })
+@WebServlet(urlPatterns = { "/Controller", "*.do" }, initParams = {
+		@WebInitParam(name = "propertyConfig", value = "command.properties") })
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	// 명령어와 명령어 처리 클래스를 쌍으로 저장
@@ -127,6 +127,8 @@ public class Controller extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.setAttribute("cont", view);
+		System.out.println("view는 : "+view);
+		System.out.println("com는 : "+com);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 		dispatcher.forward(request, response);
 	}

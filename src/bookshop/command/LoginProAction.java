@@ -20,7 +20,7 @@ public class LoginProAction implements CommandAction {
 		int check= manager.userCheck(id,passwd);
 		request.setAttribute("id", id);
 		request.setAttribute("check", new Integer(check));
-		System.out.println("체크"+check);
+		System.out.println(id+"/"+passwd+"/"+check);
 		
 		return "/member/loginPro.jsp";
 	}

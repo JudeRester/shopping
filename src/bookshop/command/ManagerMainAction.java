@@ -12,6 +12,7 @@ public class ManagerMainAction implements CommandAction {
 		
 		//관리자를 구분할 때 사용
 		request.setAttribute("type", new Integer(0));
+		System.out.println("관리자구분 : "+new Integer(0));
 		return "/mngr/managerMain.jsp";//응답페이지
 	}
 }
