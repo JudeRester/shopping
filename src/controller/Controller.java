@@ -99,6 +99,7 @@ public class Controller extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		requestPro(request, response);// 요청처리 메소드 호출
+		System.out.println("doget방식입니다.");
 	}
 
 	/**
@@ -109,6 +110,7 @@ public class Controller extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		requestPro(request, response);// 요청처리 메소드 호출
+		System.out.println("dopost방식입니다.");
 	}
 
 	// 웹브라우저의 요청을 분석하고, 해당 로직의 처리를 할 모델 실행 및
@@ -119,6 +121,7 @@ public class Controller extends HttpServlet {
 		CommandAction com = null;
 		try {
 			String command = request.getRequestURI();
+			System.out.println(command);
 			if (command.indexOf(request.getContextPath()) == 0)
 				command = command.substring(request.getContextPath().length());
 			com = (CommandAction) commandMap.get(command);
@@ -128,7 +131,6 @@ public class Controller extends HttpServlet {
 		}
 		request.setAttribute("cont", view);
 		System.out.println("view는 : "+view);
-
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}

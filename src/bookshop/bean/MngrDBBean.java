@@ -82,11 +82,30 @@ public class MngrDBBean {
         try {
             conn = getConnection();
             String sql = "insert into product(pro_num,title,pro_desc,";
-            sql += "price,begin_date,end_date,title_img) values (?,?,?,?,?,?,?)";
-            
+            sql += "price,begin_date,end_date,title_img) values (";           
             pstmt = conn.prepareStatement(sql);
-            System.out.println(book.getKind()+"/"+book.getPublishing_date()+"/"+book.getGrade());
+            
+            System.out.println("PK오류좀 안나게해라"+book.getKind()+book.getPublishing_date()+book.getGrade());
+            System.out.println(book.getKind()+"/"+book.getPublishing_date()+"/"+book.getGrade());      
+            System.out.println(book.getTitle_image());
+            if(book.getKind().equals("RTS")) {
+            	sql	+= "concat(?,nextval(rts_seq),?,?,?,?,?,?)";
+
+            	 
+            }else if(book.getKind().equals("FPS")) {
+            	sql	+= "concat(?,nextval(fps_seq),?,?,?,?,?,?)";
+
+            	 
+            }else if(book.getKind().equals("액션")) {
+            	sql	+= "concat(?,nextval(act_seq),?,?,?,?,?,?)";
+
+            	 
+            }else {
+            	sql	+= "concat(?,nextval(rpg_seq),?,?,?,?,?,?)";
+
+            }
             pstmt.setString(1, book.getKind()+book.getPublishing_date()+book.getGrade());
+           
             pstmt.setString(2, book.getTitle());
             pstmt.setString(3, book.getPro_desc());
             pstmt.setInt(4, book.getPrice());

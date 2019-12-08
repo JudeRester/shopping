@@ -6,8 +6,7 @@
 <script src="js/count.js"></script>
 <div id="mid">
 	<h3>마감 임박</h3>
-	<div id="endsoon">
-		<ul>
+	<div id="endsoon">		<ul>
 			<c:forEach var="prod" items="${prod_List}">
 				<li><a href="/shopping/products/prod_info.do?pro_num=${prod.pro_num }"><img src="${prod.title_img }" alt="" /></a>
 					<div class="count" id="${prod.pro_num }"></div></li>

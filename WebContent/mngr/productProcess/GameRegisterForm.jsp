@@ -16,7 +16,7 @@
   <button id="bookMain">관리자 메인으로</button>
   <button id="bookList">목록으로</button>
 </div>
-<form id="upForm1" action="/shopping/mg/bookRegisterPro.do" 
+<form id="upForm1" action="/shopping/mg/gameRegisterPro.do" 
           method="post" enctype="multipart/form-data">
 <div id="bookRegistForm" class="box">
    <ul>
