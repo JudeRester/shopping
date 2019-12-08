@@ -100,6 +100,7 @@ public class LogonDBBean {
             if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
             if (conn != null) try { conn.close(); } catch(SQLException ex) {}
         }
+		
 		return x;
 	}
     

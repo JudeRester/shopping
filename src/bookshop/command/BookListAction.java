@@ -15,25 +15,27 @@ public class BookListAction implements CommandAction {
 			HttpServletResponse response) throws Throwable {
 		// TODO Auto-generated method stub
 		
-		List<MngrDataBean> bookList = null;
-		String book_kind = request.getParameter("book_kind");
+		List<MngrDataBean> gameList = null;
+		String kind = request.getParameter("kind");
 		int count = 0;
-		
+		System.out.println("bookList의 kind변수 : "+kind);
 		//DB연동 - 전체 상품의 수를 얻어냄
 		MngrDBBean bookProcess = MngrDBBean.getInstance();
         count = bookProcess.getBookCount(); 
+        System.out.println("전체 상품수 얻어냄 : "+count);
         
         if (count > 0){//상품이 있으면 수행
         	//상품전체를 테이블에서 얻어내서 bookList에 저장
-        	bookList = bookProcess.getBooks(book_kind);
+        	gameList = bookProcess.getBooks(kind);
         	//bookList를 뷰에서 사용할 수 있도록 request속성에 저장
-        	request.setAttribute("bookList", bookList);
+        	request.setAttribute("bookList", gameList);
         }
        
         //뷰에서 사용할 속성
         request.setAttribute("count", new Integer(count));
-        request.setAttribute("book_kind", book_kind);
+        request.setAttribute("kind", kind);
         request.setAttribute("type", new Integer(0));
+        System.out.println("뷰에서 사용할 속성 : "+new Integer(count)+"/"+kind+"/"+new Integer(0));
 		return "/mngr/productProcess/bookList.jsp";
 	}
 }
