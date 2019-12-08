@@ -1,7 +1,6 @@
 package bookshop.bean;
 
 import java.sql.Date;
-import java.sql.Timestamp;
 
 public class MngrDataBean {
 	private String pro_num; //게임 등록번호
