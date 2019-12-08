@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,14 +19,27 @@
 </head>
 <body>
 	<div id="logo">
-		<div id="memfuncs">
-			<ul>
-				<li><a href="javascript:void(0)" id="login">로그인</a></li>
-				<li><a href="javascript:void(0)" id="join">회원가입</a></li>
-			</ul>
-		</div>
-		<a href="javascript:void(0)"><img src="/shopping/images/main_Logo.png"
-			alt="" /></a>
+		<c:choose>
+			<c:when test="${empty sessionScope.id }">
+				<div id="memfuncs">
+					<ul>
+						<li><a href="javascript:void(0)" id="login">로그인</a></li>
+						<li><a href="javascript:void(0)" id="join">회원가입</a></li>
+					</ul>
+				</div>
+			</c:when>
+			<c:when test="${!empty sessionScope.id }">
+				<div id="memfuncs">
+					<ul>
+						<li><c:out value="${sessionScope.id }" />님</li>
+						<li><a href="javascript:void(0)" id="logout">로그아웃</a></li>
+					</ul>
+				</div>
+			</c:when>
+		</c:choose>
+
+		<a href="javascript:void(0)"><img
+			src="/shopping/images/main_Logo.png" alt="" /></a>
 
 	</div>
 	<div id="menu">
@@ -69,8 +83,8 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="submit" value="로그인" id="uLogin"/> <input type="button"
-							value="취소" class="cancel" /></td>
+						<td><input type="button" value="로그인" id="uLogin" /> <input
+							type="reset" value="취소" class="cancel" /></td>
 					</tr>
 				</table>
 			</form>
@@ -84,6 +98,7 @@
 					<tr>
 						<td><label for="id_join">아이디</label></td>
 						<td><input type="text" id="id_join" name="id" /></td>
+						<td><input type="button" id="checkId" value="중복확인" /></td>
 					</tr>
 					<tr>
 						<td><label for="pass_join">비밀번호</label></td>
@@ -98,8 +113,8 @@
 						<td><input type="date" id="birth" name="birth" /></td>
 					</tr>
 					<tr>
-						<td><label for="addr">주소</label></td>
-						<td><input type="text" id="addr" name="addr" /></td>
+						<td><label for="address">주소</label></td>
+						<td><input type="text" id="address" name="address" /></td>
 					</tr>
 					<tr>
 						<td><label for="phone">전화번호</label></td>
@@ -111,8 +126,8 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="submit" value="회원가입" /> <input type="button"
-							value="취소" class="cancel" /></td>
+						<td><input type="button" value="회원가입" id="process"/> <input
+							type="reset" value="취소" class="cancel" /></td>
 					</tr>
 				</table>
 			</form>

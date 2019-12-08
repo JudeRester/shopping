@@ -7,4 +7,5 @@ encoding//src/bookshop/bean/LogonDataBean.java=UTF-8
 encoding//src/bookshop/bean/MngrDBBean.java=UTF-8
 encoding//src/bookshop/bean/QnaDBBean.java=UTF-8
 encoding//src/bookshop/command/RegisterProAction.java=UTF-8
+encoding//src/shopping/command/RegisterProAction.java=UTF-8
 encoding/<project>=UTF-8
