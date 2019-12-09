@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+section {
+	width: 980px;
+	margin: 0 auto;
+	margin-top: 20px;
+	text-align: center;
+}
+
+table{
+	width:100%;
+	margin : 10px;
+	text-align:center;
+	border-collapse: collapse;
+}
+td{
+	border-bottom: 1px solid #444444;
+	padding : 10px;
+}
+
+.thumb{
+	width: 250px;
+}

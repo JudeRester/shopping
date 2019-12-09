@@ -65,7 +65,7 @@
 				</ul></li>
 			<li><a href="#">&nbsp;</a></li>
 			<li><a href="#">고객센터</a></li>
-			<li><a href="#">장바구니</a></li>
+			<li><a href="cart.do">장바구니</a></li>
 		</ul>
 	</div>
 
